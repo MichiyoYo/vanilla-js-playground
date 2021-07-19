@@ -222,6 +222,43 @@
         })
         console.log(student)
 
+        //Reduce
+
+        console.clear();
+
+        let total = 0;
+        orderTotals.forEach(singleTotal => {
+            total += singleTotal
+        })
+        console.log(total)
+
+        //reduce avoids to use a variable where to store the data
+
+        const tallyNumbers = (tally, currentTotal) => {
+            console.log(`the current tally is ${tally}`);
+            console.log(`the current total is ${currentTotal}`);
+            console.log('-----💰-----')
+            //return the current tally + plus the amount of this order
+            return tally + currentTotal
+        }
+
+        const allOrders = orderTotals.reduce(tallyNumbers, 0);
+
+        function inventoryReducer(totals, item) {
+            console.log(`loopping over ${item.type}`)
+            //increment type by 1
+            totals[item.type] = totals[item.type] + 1 || 1;
+            //return the totals so the next loop can use it
+            return totals
+
+        }
+
+        const inventoryCounts = inventory.reduce(inventoryReducer, {})
+        console.log(inventoryCounts)
+
+        const totalInventoryPrice = inventory.reduce((acc, item) => acc + item.price, 0)
+        console.log(totalInventoryPrice)
+
     </script>
 </body>
 
