@@ -7,7 +7,7 @@
     <title>
 
     </title>
-    <link rel="stylesheet" href="../../base.css">
+    <link rel="stylesheet" href="./base.css">
 </head>
 
 <body>
@@ -165,6 +165,63 @@
 
         console.log('logToppingComplex runnning:')
         toppings.forEach(logToppingComplex);
+
+
+        //Map, Filtering and Reduce
+
+        //Mappings
+
+        console.clear();
+
+        function addArms(face) {
+            return "👋" + face + "👋";
+        }
+
+        const toys = faces.map(addArms)
+        console.log(toys)
+
+        function lesterify(name) {
+            return `${name} Lester`
+        }
+
+        function capitalize(word) {
+            return word[0].toUpperCase() + word.slice(1);
+        }
+
+        const fullNames = ['joe', 'cree', 'mo'].map(lesterify).map(capitalize)
+        console.log(fullNames)
+
+        const orderTotalsWithTax = orderTotals.map(total => total * 1.13)
+        console.log(orderTotals);
+        console.log(orderTotalsWithTax);
+
+        const cleanPeople = people.map(function (person) {
+            const birthday = new Date(person.birthday).getTime();
+            const now = Date.now();
+            const age = Math.floor((now - birthday) / 31536000000);
+            console.log(age)
+            return {
+                age: age,
+                name: `${person.names.first} ${person.names.last}`
+            }
+        });
+
+        console.table(cleanPeople)
+
+        //filtering always returns an array
+
+        const filteredPeople = cleanPeople.filter((person) => person.age > 40);
+        console.table(filteredPeople)
+
+        //find will return the actual item (object)
+
+        const student = students.find((alumn) => {
+            if (alumn.id === '565a') {
+                return alumn
+            }
+        })
+        console.log(student)
+
     </script>
 </body>
 
