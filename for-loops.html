@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>For Loops</title>
+</head>
+
+<body>
+    <script>
+        const numbers = [2, 34, 3, 23, 42, 3, 1, 65, 364, 5, 645, 6];
+
+        const name = 'Cree Les 🌻';
+
+        const creeObj = {
+            name: 'cree',
+            age: 33,
+            cool: 'true'
+        }
+
+        // For
+        console.log('Example of simple for: ')
+        for (let i = 0; i < numbers.length; i++) {
+            console.log(i)
+        }
+
+        // For of to use on iterables (something that has a length)
+        console.log('Example of for of: ')
+        for (const letter of name) {
+            console.log(letter)
+        }
+
+        // For in is used for looping over keys of an object
+        console.log('Example of for in: ')
+        for (const prop in creeObj) {
+            console.log(prop)
+        }
+        console.log("🌻🌻🌻🌻🌻🌻🌻")
+        const baseHumanStats = {
+            hands: 2,
+            arms: 2,
+            eyes: 2,
+            nose: 1
+        }
+
+        function Human(name) {
+            this.name = name;
+        }
+
+        Human.prototype = baseHumanStats;
+
+        const cree = new Human('cree');
+
+        for (const stats in cree) {
+            console.log(stats)
+        }
+
+        // While Loop
+        let cool = true;
+        let i = 0;
+        while (cool && i < 10) {
+            console.log(`you're cool ${i} times`);
+            i++;
+        }
+
+
+    </script>
+</body>
+
+</html>
