@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>New, This, Prototypes and Classes</title>
+  <link rel="stylesheet" href="../base.css">
+</head>
+
+<body>
+
+  <button class="one">Button One</button>
+  <button class="two">Button Two</button>
+
+  <script>
+    const myDate = new Date('August 11, 2025')
+    console.log(myDate.getFullYear())
+
+    const names = ['cree','joe'] //literal Array syntax
+    const names2 = new Array('mochi', 'sophie') //building array using constructor of the class Array
+
+    const person = {  // literal Object syntax
+      firstName: 'Cree',
+      lastName: 'Lester'
+    }
+    const person2 = new Object ({firstName: 'Joe', lastName:'Lester'}) //using contructor of class Object
+
+    const span = document.createElement('span');
+
+    //these are all true
+    console.log(span instanceof HTMLSpanElement)
+    console.log(span instanceof Element)
+    console.log(span instanceof Node)
+
+    //this is a construction
+    function Pizza(toppings = [], customer){
+      console.log('Making a pizza...')
+      //save the toppings that were passed in as an instance of pizzza
+      this.toppings = toppings;
+      //save the customer that was passed in as an instance of pizza
+      this.customer = customer;
+      this.id = Math.floor(Math.random()*1677)
+    }
+
+    const italianPizza = new Pizza(['tomato','cheese'], 'Cristina');
+    const canadianPizza = new Pizza(['pepperoni','mushrooms','pineapple'], 'Wes Bos');
+
+    // const pepperoniPizza = new Pizza();
+    // console.log(pepperoniPizza.constructor)
+
+    // const button1 = document.querySelector('.one');
+    // const button2 = document.querySelector('.two');
+
+    // function tellMeAboutTheButton(){
+    //   console.log(this)
+    //   setTimeout(()=>{
+    //     this.textContent = 'You Clicked me'
+    //   },1000)
+    // }
+
+    // button1.addEventListener('click', tellMeAboutTheButton)
+    // button2.addEventListener('click', tellMeAboutTheButton)
+
+
+
+  </script>
+</body>
+
+</html>
