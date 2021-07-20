@@ -1,24 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Reduce!</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Reduce!</title>
-  <link rel="stylesheet" href="../../base.css">
-</head>
+  <body>
+    <script>
+      // Grab all the text from a web page
+      // Count how many times each letter and number occurs
 
-<body>
-  <script>
-    // Grab all the text from a web page
-    // Count how many times each letter and number occurs
-
-    const text = ` 
+      const text = `
 HOME ABOUT RESUME CONTACT
 Cristina D. Lester
 I’m an analyst programmer with 8+ years of experience in front-end/back- end web development, system management, maintenance and more! I’ve been working in companies and as a freelancer using different platforms, tools and languages. I enjoy being challenged and working on projects that require me to work outside my comfort zone and knowledge set.
 Let's start scrolling and learn more about me.
-  
+
 
 About Me
 My name is Cristina Lester, I'm 33 years old, native Italian, I live in Los Angeles. I studied Computer Science at University of Pisa. The training I received has been a solid base to build my first freelance projects and achieve my first goals as a young developer. Now I have more than 8 years of professional experience as frontend/backend web developer, webmaster, system administrator and performance analyst. I love to grow and learn from my job, experiment with new technologies and languages, share my skills and achieve new goals. I am an extremely fast learner, I don't feel confined to the skill set that I already have, instead I always look for an opportunity to expand it. I like to be challenged. I spent my entire career debugging code, fix issues, find the best solution to every problem that would be presented to me. My ideal job would be a point of junction between coding and art, something that would let me express my creativity and be satisfyingly rewarding. I love to work in teams, to communicate with my teammates and build a professional relationship with them that fortifies the team work. I speak Italian (native), English (fluent). I'm also a Bass Player, Digital Illustrator, Gourmet Cook, Fitness Fan, Yoga Student.
@@ -107,46 +106,40 @@ Cristina Del Gaudio Lester
 90026 Los Angeles, CA
 (213) 444 - 9753
 
-  
+
 © Copyright 2016 Cristina Del Gaudio
 `;
 
-    //if that character is a-z or A-Z or 0-9 then we want to keep it!
-    //we do that with a match function
-    function isValidChar(char) {
-      return char.match(/[a-z0-9]/i)
-    }
+      //if that character is a-z or A-Z or 0-9 then we want to keep it!
+      //we do that with a match function
+      function isValidChar(char) {
+        return char.match(/[a-z0-9]/i);
+      }
 
-    //makes char lowercase
-    const lowercase = (char) => char.toLowerCase();
+      //makes char lowercase
+      const lowercase = char => char.toLowerCase();
 
+      //counts: the accumulator
+      //char the character we are counting
+      const instanceCounterReducer = (counts, char) => {
+        counts[char] ? (counts[char] += 1) : (counts[char] = 1);
+        return counts;
+      };
 
-    //counts: the accumulator
-    //char the character we are counting
-    const instanceCounterReducer = (counts, char) => {
-      counts[char] ? counts[char] += 1 : counts[char] = 1
-      return counts;
-    }
+      const result = text
+        .split("")
+        .filter(isValidChar)
+        .map(lowercase)
+        .reduce(instanceCounterReducer, {});
 
-    const result = text
-      .split('')
-      .filter(isValidChar)
-      .map(lowercase)
-      .reduce(instanceCounterReducer, {});
+      console.log(Object.entries(result));
 
-    console.log(Object.entries(result));
+      function sortByValue(a, b) {
+        return a[1] - b[1];
+      }
 
-    function sortByValue(a, b) {
-      return a[1] - b[1]
-    }
-
-    const sortedResult = Object.entries(result).sort(sortByValue)
-    console.log(sortedResult)
-
-
-
-
-  </script>
-</body>
-
+      const sortedResult = Object.entries(result).sort(sortByValue);
+      console.log(sortedResult);
+    </script>
+  </body>
 </html>
