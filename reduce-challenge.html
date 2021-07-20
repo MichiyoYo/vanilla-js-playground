@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Reduce!</title>
+  <link rel="stylesheet" href="../../base.css">
+</head>
+
+<body>
+  <script>
+    // Grab all the text from a web page
+    // Count how many times each letter and number occurs
+
+    const text = ` 
+HOME ABOUT RESUME CONTACT
+Cristina D. Lester
+I’m an analyst programmer with 8+ years of experience in front-end/back- end web development, system management, maintenance and more! I’ve been working in companies and as a freelancer using different platforms, tools and languages. I enjoy being challenged and working on projects that require me to work outside my comfort zone and knowledge set.
+Let's start scrolling and learn more about me.
+  
+
+About Me
+My name is Cristina Lester, I'm 33 years old, native Italian, I live in Los Angeles. I studied Computer Science at University of Pisa. The training I received has been a solid base to build my first freelance projects and achieve my first goals as a young developer. Now I have more than 8 years of professional experience as frontend/backend web developer, webmaster, system administrator and performance analyst. I love to grow and learn from my job, experiment with new technologies and languages, share my skills and achieve new goals. I am an extremely fast learner, I don't feel confined to the skill set that I already have, instead I always look for an opportunity to expand it. I like to be challenged. I spent my entire career debugging code, fix issues, find the best solution to every problem that would be presented to me. My ideal job would be a point of junction between coding and art, something that would let me express my creativity and be satisfyingly rewarding. I love to work in teams, to communicate with my teammates and build a professional relationship with them that fortifies the team work. I speak Italian (native), English (fluent). I'm also a Bass Player, Digital Illustrator, Gourmet Cook, Fitness Fan, Yoga Student.
+
+Contact Details
+Cristina D. Lester
+2228 1/2 Aaron Street
+90026 Los Angeles, CA
+(213) 444 - 9753
+cristina.deelester@gmail.com
+
+Download Resume
+
+EDUCATION
+Univerità di Pisa
+Computer Science • 164/180 completed credits
+
+Related completed coursework: Java, C, SQL, PHP, HTML, CSS, Javascript programming workshops | Algorithms | Databases | Cryptography | Computer Networks | Computer Architectures | Numerical analysis | Software Engineering
+
+WORK
+Studio III Marketing, Los Angeles
+Senior Site Reliability Developer
+July 2017 - Current
+
+Main Tasks:
+
+Developed and maintained 200+ static and dynamic websites per year (HTML, CSS, JS, PHP, Wordpress, DatoCMS)
+Satisfied clients' requests with 100% satisfaction and max turnaround time of 24 hours
+Contributed to development and maintenance of an in-house-built platform for website deployment (DatoCMS, Twig, GraphQL)
+Optimized page load speed bringing Google Page Speed score from 20 to 95+
+Refactored code of older static websites to updated languages, with usage of modern libraries and data structures
+Turned web designs from static images to interactive web pages applying best practices for page load speed
+Optimized pages for SEO purposes
+Implemented Google Ads on web pages and bond them with on-page live events
+Integrated CRM systems with Studio III Marketing sites for data monitoring and reporting
+Maintained, debugged, updated Wordpress core and plugins
+Developed custom templates and custom modules upon client requests Initialized, configured and maintained Amazon Lightsail DigitalOcean and MediaTemple instances in order to migrate websites
+Configured DNS records and optimized caching solutions with Cloudflare platform
+LiberSoft srl
+Web Developer, Web/Graphic Designer, System Manager, Full­-stack Developer. Expertize in front­end development using different frameworks and tools
+September 2013 - October 2016
+
+Main Tasks:
+
+T​rained over 10 staff members in internal web functions
+Directed development teams to prioritize needs and choose solutions
+Managed access rules for users to remote and local servers and Git repositories
+Joined Aruba team as external developer to fix bugs in UI and develop new interfaces for the latest releases of their main software
+Developed graphic designs for brochures, posters, flyers, websites
+Computer Tecnica Engineering
+Media Editor • January 2006 - November 2009
+
+Main Tasks:
+
+Prepared, rewrote and edited copy to improve readability, or supervise others who do this work
+Verified facts, dates, and statistics, using standard reference sources
+Read copy or proof to detect and correct errors in spelling, punctuation, and syntax
+Planned the contents of publications according to the publication's style, editorial policy, and publishing requirements
+Read, evaluated and edited manuscripts or other materials submitted for publication and confer with authors regarding changes in content, style or organization, or publication
+Allocated print space for story text, photos, and illustrations according to space parameters and copy significance, using knowledge of layout principles
+Searched standard reference materials, including online sources and the Internet
+VOLUNTEERING
+L'Alba Associazione
+Web Developer, System Manager, Graphic Designer, Media Editor, Event Planner
+November 2009 - November 2010
+
+Designed, built, and maintained web sites using Joomla! CMS
+Determined sources of web page or server problems
+Administered internet/intranet infrastructure
+Evaluate code to ensure that it is valid, is properly structured, meets industry standards and is compatible with browsers, devices, or operating systems
+Developed graphics and layouts for product illustrations, company logos, and Internet websites
+Developed briefings, brochures, multimedia presentations, web pages, promotional products, technical illustrations, and computer artwork for use in products, technical manuals, literature, newsletters and slide shows
+SKILLS
+Languages HTML, XML, CSS, JavaScript, Jquery, Python, Java, C, PHP, SQL, Bash Operating Systems ​Linux, (Ubuntu, Mint, Debian, KDE), Windows (2000, XP, Vista, 7, 8, 10) Platforms Drupal, WordPress, Moodle, SugarCRM, SuiteCRM(frontend/backend development) Frameworks Djangos, Symfony, Bootstrap, Materialize SysAdmin MySQL, PostgreSQL, MongoDB databases | Apache and Nginx web servers Development Tools A​tom, Sublime Text, Eclipse, Git, MySQL Workbench, PHPMyAdmin, PHPPGAdmin Networking T​CP/IP, UDP, FTP, SSH, SFTP, HTTP, DNS, SMTP protocols Design Adobe Photoshop, Adobe Illustrator, GIMP, InkScape, Krita Spoken Languages Italian (native), English(fluent), Spanish(basic knowledge)
+If you're interested in my professional profile, please contact me! I'm searching for new, exciting work experiences and I can't wait to put all my skills at your service.
+
+
+Name *
+Email *
+Subject
+Message *
+SUBMIT
+Address and Phone
+Cristina Del Gaudio Lester
+2228 1/2 Aaron Street
+90026 Los Angeles, CA
+(213) 444 - 9753
+
+  
+© Copyright 2016 Cristina Del Gaudio
+`;
+
+    //if that character is a-z or A-Z or 0-9 then we want to keep it!
+    //we do that with a match function
+    function isValidChar(char) {
+      return char.match(/[a-z0-9]/i)
+    }
+
+    //makes char lowercase
+    const lowercase = (char) => char.toLowerCase();
+
+
+    //counts: the accumulator
+    //char the character we are counting
+    const instanceCounterReducer = (counts, char) => {
+      counts[char] ? counts[char] += 1 : counts[char] = 1
+      return counts;
+    }
+
+    const result = text
+      .split('')
+      .filter(isValidChar)
+      .map(lowercase)
+      .reduce(instanceCounterReducer, {});
+
+    console.log(Object.entries(result));
+
+    function sortByValue(a, b) {
+      return a[1] - b[1]
+    }
+
+    const sortedResult = Object.entries(result).sort(sortByValue)
+    console.log(sortedResult)
+
+
+
+
+  </script>
+</body>
+
+</html>
