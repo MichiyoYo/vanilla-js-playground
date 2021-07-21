@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Event Loop</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
+
+  <body>
+    <style>
+      .go {
+        margin: 5rem;
+        background: white;
+        padding: 5rem;
+        width: 15rem;
+        height: 15rem;
+        transition: all 0.2s;
+        text-align: center;
+      }
+      .circle {
+        border-radius: 50%;
+      }
+      .red {
+        background: red;
+      }
+      .purple {
+        background: purple;
+      }
+      .fade {
+        opacity: 0;
+      }
+    </style>
+    <div class="go">Click me</div>
+    <script>
+      const wait = (ms = 0) =>
+        new Promise((resolve) => setTimeout(resolve, ms));
+
+      wait(200).then(() => {
+        console.log("Done!");
+      });
+
+      const go = document.querySelector(".go");
+
+      function animate(e) {
+        const el = e.currentTarget;
+        //change the text to GO when clicked
+        el.textContent = "GO";
+        //make it a circle after 200 ms
+        wait(200)
+          .then(() => {
+            el.classList.add("circle");
+            return wait(500);
+          })
+          .then(() => {
+            //make it red after 0.5s
+            el.classList.add("red");
+            return wait(250);
+          })
+          .then(() => {
+            el.classList.remove("circle");
+            return wait(500);
+          })
+          .then(() => {
+            el.classList.add("purple");
+            el.classList.remove("red");
+            return wait(500);
+          })
+          .then(() => {
+            el.classList.add("fade");
+          });
+      }
+
+      go.addEventListener("click", animate);
+    </script>
+  </body>
+</html>
