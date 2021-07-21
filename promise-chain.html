@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <title>Event Loop</title>
-    <link rel="stylesheet" href="../base.css" />
+    <link rel="stylesheet" href="./base.css" />
   </head>
 
   <body>
@@ -71,7 +71,25 @@
           });
       }
 
-      go.addEventListener("click", animate);
+      async function animateWithAsyncAwait(e) {
+        const el = e.currentTarget;
+        //change the text to GO when clicked
+        el.textContent = "GO";
+        //make it a circle after 200 ms
+        await wait(200);
+        el.classList.add("circle");
+        await wait(500);
+        el.classList.add("red");
+        await wait(250);
+        el.classList.remove("circle");
+        await wait(500);
+        el.classList.add("purple");
+        el.classList.remove("red");
+        await wait(500);
+        el.classList.add("fade");
+      }
+
+      go.addEventListener("click", animateWithAsyncAwait);
     </script>
   </body>
 </html>
