@@ -10,7 +10,7 @@
 
 <body>
 
-  <button class="one">Button One</button>
+  <button class="one">Button on</button>
   <button class="two">Button Two</button>
 
   <script>
@@ -41,6 +41,12 @@
       //save the customer that was passed in as an instance of pizza
       this.customer = customer;
       this.id = Math.floor(Math.random()*1677)
+      this.slices = 10;
+
+      this.eat = function() {
+          console.log('CHOMP!')
+          this.slices -= 1;
+      }
     }
 
     const italianPizza = new Pizza(['tomato','cheese'], 'Cristina');
