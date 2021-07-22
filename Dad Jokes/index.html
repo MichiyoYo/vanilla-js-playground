@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dad Jokes</title>
+    <link rel="stylesheet" href="../../base.css" />
+    <style>
+      html {
+        --size: 20px;
+      }
+      .wrapper {
+        text-align: center;
+      }
+
+      .joke {
+        font-size: 5rem;
+        font-weight: 900;
+      }
+
+      .lds-dual-ring {
+        display: inline-block;
+        width: var(--size);
+        height: var(--size);
+      }
+      .lds-dual-ring:after {
+        content: " ";
+        display: block;
+        width: calc(var(--size) / 2);
+        height: calc(var(--size) / 2);
+        margin: 8px;
+        border-radius: 50%;
+        border: 6px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-dual-ring 1.2s linear infinite;
+      }
+      @keyframes lds-dual-ring {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="joke">
+        <p>Dad Jokes.</p>
+      </div>
+      <button class="getJoke">
+        <span class="jokeText">Get A Joke</span>
+        <div class="lds-dual-ring loader hidden"></div>
+      </button>
+    </div>
+
+    <script src="./jokes.js"></script>
+  </body>
+</html>
